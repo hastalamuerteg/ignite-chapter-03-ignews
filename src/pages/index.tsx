@@ -1,4 +1,11 @@
 import Head from "next/head";
+
 export default function Home() {
-  return <h1>Hello next</h1>;
+  return (
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+    </>
+  );
 }
