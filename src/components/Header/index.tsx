@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.svg";
+import { SignInButton } from "../SignInButton";
 import styles from "./styles.module.scss";
 
 export function Header() {
@@ -12,16 +10,14 @@ export function Header() {
         <Image src="/assets/logo.svg" alt="ignews" width="100" height="100" />
         <nav>
           <Link href="">
-            <a>Home</a>
+            <a className={styles.active}>Home</a>
           </Link>
           <Link href="">
             <a>Posts</a>
           </Link>
         </nav>
+        <SignInButton />
       </div>
-      {/* <div>
-        <button>Sign in with Github</button>
-      </div> */}
     </header>
   );
 }
