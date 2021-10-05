@@ -3,7 +3,7 @@ import Image from "next/image";
 import { SubscribeButton } from "../components/SubscribeButton";
 import styles from "./home.module.scss";
 
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { stripe } from "../services/stripe";
 
 interface IHomeProps {
@@ -46,7 +46,7 @@ export default function Home({ product }: IHomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve("price_1Jgo1oIATRbPLEcfc8GMk7Kh");
 
   const product = {
@@ -61,5 +61,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       product,
     },
+    revalidate: 60 * 60 * 24, // 24 hours
   };
 };
